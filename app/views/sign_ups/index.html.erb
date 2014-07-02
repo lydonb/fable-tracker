@@ -1,0 +1,39 @@
+<div class="col_12" />
+<div class="col_12 center">
+	<button class="large">
+		<i class="icon-plus-sign"></i> <%= link_to 'Sign Up', new_sign_up_path, :class => "small" %>
+	</button>
+</div>
+<div class="col_12 center">
+	<h2>Upcoming Fables</h2>
+</div>
+
+<div class="grid">
+	<% @sign_ups.each do |sign_up| %>
+	<div class="col_4 center visible">
+		<hr />
+		<i class="icon-user icon-4x"></i>
+		<h5 class="center"><%= sign_up.user.email %></h5>
+		<div class="col_12">
+
+			<p>Date: <%= sign_up.fable.date %></p>
+			<p>Topic: <%= sign_up.topic.description %></p>
+			<p>Beverage: <%= sign_up.beverage_request %></p>
+		</div>
+		<div class="col_12">
+			<ul class="button-bar">
+				<li>
+					<%= link_to 'View', sign_up %>
+				</li>
+				<li>
+					<%= link_to 'Edit', edit_sign_up_path(sign_up) %>
+				</li>
+				<li>
+					<%= link_to 'Delete', sign_up, method: :destroy, data: { confirm: 'Are you sure?' } %>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<% end %>
+</div>
+

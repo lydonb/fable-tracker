@@ -1,0 +1,28 @@
+<div class="grid col_3"></div>
+<div class="grid col_6">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fable:</strong>
+  <%= @sign_up.fable.date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sign_up.user.email %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @sign_up.topic.description %>
+</p>
+
+<p>
+  <strong>Beverage request:</strong>
+  <%= @sign_up.beverage_request %>
+</p>
+
+<%= link_to 'Edit', edit_sign_up_path(@sign_up) %> |
+<%= link_to 'Back', sign_ups_path %>
+</div>
+<div class="grid col_3"></div>

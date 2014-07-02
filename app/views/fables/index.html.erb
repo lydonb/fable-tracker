@@ -1,0 +1,46 @@
+<div class="col_12" />
+<div class="col_12 center">
+	<button class="large">
+		<i class="icon-plus-sign"></i> <%= link_to 'New Fable', new_fable_path, :class => "small" %>
+	</button>
+</div>
+<div class="col_12 center">
+	<h2>Upcoming Fables</h2>
+</div>
+<div class="grid">
+	<% @fables.each do |fable| %>
+	<div class="col_4 center visible">
+		<hr />
+		<i class="icon-calendar icon-4x"></i>
+		<h5 class="center"><%= fable.date %></h5>
+		<div class="col_6">
+			<p>
+				<h6>Topic 1</h6>
+			</p>
+			<h6><%= if(fable.sign_ups.size > 0) then link_to fable.sign_ups[0].topic.description, sign_up_path(fable.sign_ups[0]) else link_to 'Sign Up', new_sign_up_path(fable_id: fable.id) end %></h6>
+		</div>
+		<div class="col_6">
+			<p>
+				<h6>Topic 2</h6>
+			</p>
+			<h6> <%= if(fable.sign_ups.size > 1) then link_to fable.sign_ups[1].topic.description, sign_up_path(fable.sign_ups[0]) else link_to 'Sign Up', new_sign_up_path(fable_id: fable.id) end %> </h6>
+		</div>
+		<br />
+		<div class="col_12">
+			<ul class="button-bar">
+				<li>
+					<%= link_to 'View', fable %>
+				</li>
+				<li>
+					<%= link_to 'Edit', edit_fable_path(fable) %>
+				</li>
+				<li>
+					<%= link_to 'Delete', fable, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</li>
+			</ul>
+			</p>
+		</div>
+		<hr />
+	</div>
+	<% end %>
+</div>

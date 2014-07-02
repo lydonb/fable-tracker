@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fable_id: 1
+  user_id: 1
+  topic: MyString
+  beverage_request: MyString
+
+two:
+  fable_id: 1
+  user_id: 1
+  topic: MyString
+  beverage_request: MyString

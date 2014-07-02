@@ -1,0 +1,32 @@
+<div class="col_12" />
+<div class="col_12 center">
+	<button class="large">
+		<i class="icon-plus-sign"></i> <%= link_to 'New Topic', new_topic_path, :class => "small" %>
+	</button>
+</div>
+<div class="col_12 center">
+	<h2>Topics</h2>
+</div>
+
+<div class="grid">
+	<% @topics.each do |topic| %>
+	<div class="col_3 center visible">
+		<hr />
+		<i class="icon-book icon-4x"></i>
+		<h5 class="center"><%= topic.description %></h5>
+		<div class="col_12">
+			<ul class="button-bar">
+				<li>
+					<%= link_to 'View', topic %>
+				</li>
+				<li>
+					<%= link_to 'Edit', edit_topic_path(topic) %>
+				</li>
+				<li>
+					<%= link_to 'Delete', topic, method: :destroy, data: { confirm: 'Are you sure?' } %>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<% end %>
+</div>

@@ -1,0 +1,26 @@
+<div class="grid">
+	<div class="col_12 center">
+		<p id="notice">
+			<%= notice %>
+		</p>
+	</div>
+	<div class="col_12 center">
+		<p>
+			<h3> <%= link_to @fable.date.to_s , edit_fable_path(@fable) %> </h3>
+		</p>
+	</div>
+	<% @fable.sign_ups.each do |sup| %>
+	<div class="col_6 center visible">
+		<hr />
+		<i class="icon-user icon-4x"></i>
+		<h5 class="center"><%= sup.user.email %></h5>
+		<div class="col_12">
+				Topic: <%= sup.topic.description %>
+			</p>
+			<p>
+				Beverage: <%= sup.beverage_request %>
+			</p>
+		</div>
+	</div>
+	<% end %>
+</div>

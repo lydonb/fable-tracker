@@ -1,0 +1,95 @@
+<%= form_for(@sign_up) do |f| %>
+<% if @sign_up.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@sign_up.errors.count, "error") %> prohibited this sign_up from being saved:</h2>
+
+	<ul>
+		<% @sign_up.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="field">
+	<%= f.label :fable_id %>
+	<br>
+	<%= collection_select(:sign_up, :fable_id, Fable.where("date >= ?", Date.today), :id, :date) %>
+</div>
+<div class="field">
+	<%= f.label :user_id %>
+	<br>
+	<%= collection_select(:sign_up, :user_id, User.all, :id, :email, :selected => current_user.id) %>
+</div>
+<div class="field">
+	<%= f.label :topic %>
+	<br>
+	<div id = 'topic-div'>
+		<%= collection_select(:sign_up, :topic_id, Topic.all, :id, :description, :prompt => "-Select a Topic") %>
+		<a id="opener" class="button small"> New Topic </a>
+	</div>
+	<div id='new-topic' class="hide">
+		<input type="text" id="topic-description" />
+		<a class='button small' id='add-new-topic'>Add</a>
+	</div>
+	<div id="target"></div>
+</div>
+<div class="field">
+	<%= f.label :beverage_request %>
+	<br>
+	<%= f.text_field :beverage_request %>
+</div>
+<div class="actions">
+	<%= f.submit 'Create Sign Up', :id => 'submit-button' %>
+</div>
+<% end %>
+
+<script type="text/javascript">
+	$('#opener').click(function() {
+		$('#topic-div').hide();
+		$('#new-topic').show();
+		$('#submit-button').attr('disabled', true);
+	});
+
+	$('#add-new-topic').click(function() {
+		$.ajax({
+			url : '/topics.json',
+			type : 'POST',
+			contentType : "application/json",
+			beforeSend : function(xhr) {
+				xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+			},
+			dataType : 'json',
+			success : function(data) {
+				$('#sign_up_topic_id').empty();
+
+				$('#sign_up_topic_id').append($("<option></option>").attr("value", data.id).text(data.description));
+			},
+			data : '{"topic": {"description": "' + $("#topic-description").val() + '"}}'
+		});
+		$('#new-topic').hide();
+		$('#topic-div').show();
+		$('#submit-button').attr('disabled', false);
+	}); 
+</script>
+
+<!--
+<script>
+$(function() {
+$("#dialog").dialog({
+autoOpen : false,
+modal: true
+});
+});
+
+$("#opener").click(function() {
+$("#dialog").dialog("open");
+});
+</script>
+<div id="dialog" title="New Topic">
+<%= render 'topics/form', :@topic => Topic.new %>
+</div>
+</script>
+-->
