@@ -7,7 +7,7 @@ gem 'rails', '4.0.2'
 gem 'sqlite3'
 
 # Added to connect to AWS MySQL RDS
-gem 'mysql2'
+#gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -31,7 +31,7 @@ gem 'htmlkickstart'
 # Use jquery-ui for modal pop-ups
 #gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
-  
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
