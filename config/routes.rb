@@ -1,9 +1,15 @@
 FableSignup::Application.routes.draw do
+
+
+
   resources :topics
 
   resources :sign_ups
 
   resources :fables
+
+  get "leaderboard" => 'leader_board#index'
+
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
