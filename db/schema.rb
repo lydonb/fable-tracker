@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 20140414193202) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "fables", force: true do |t|
+  create_table "fables", force: :cascade do |t|
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "sign_ups", force: true do |t|
+  create_table "sign_ups", force: :cascade do |t|
     t.integer  "fable_id"
     t.integer  "user_id"
     t.string   "beverage_request"
@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(version: 20140414193202) do
     t.string   "topic_id"
   end
 
-  create_table "topics", force: true do |t|
+  create_table "topics", force: :cascade do |t|
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
