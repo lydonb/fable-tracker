@@ -16,7 +16,7 @@
 <div class="field">
 	<%= f.label :fable_id %>
 	<br>
-	<%= collection_select(:sign_up, :fable_id, Fable.where("date >= ?", Date.today), :id, :date) %>
+	<%= collection_select(:sign_up, :fable_id, Fable.all, :id, :date) %>
 </div>
 <div class="field">
 	<%= f.label :user_id %>
@@ -72,7 +72,7 @@
 		$('#new-topic').hide();
 		$('#topic-div').show();
 		$('#submit-button').attr('disabled', false);
-	}); 
+	});
 </script>
 
 <!--
