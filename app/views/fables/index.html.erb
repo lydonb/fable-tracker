@@ -5,7 +5,8 @@
 	</button>
 </div>
 <div class="col_12 center">
-	<h2>Upcoming Fables</h2>
+	<h2>Fable List</h2>
+	<h6><%= unless params[:show_previous] then link_to 'Show Previous Fables', fables_path(show_previous: true) end %></h6>
 </div>
 <div class="grid">
 	<% @fables.each do |fable| %>

@@ -4,7 +4,11 @@ class FablesController < ApplicationController
   # GET /fables
   # GET /fables.json
   def index
-    @fables = Fable.where("date >= ?", Date.today ).order("date")
+    if params[:show_previous] then
+      @fables = Fable.where("date < ?", Date.today ).order("date")
+    else
+      @fables = Fable.where("date >= ?", Date.today ).order("date")
+    end
   end
 
   # GET /fables/1

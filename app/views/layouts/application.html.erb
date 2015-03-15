@@ -15,29 +15,31 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div class="col_12 visible center">
-			<h1><i class='icon-beer'></i> FABLE Sign-Up</h1>
+		<div class="grid flex">
+			<div class="col_12 center">
+				<h1><i class='icon-beer'></i> FABLE Sign-Up</h1>
+			</div>
+			<div class="col_12 center">
+				<nav>
+					<!-- Menu Horizontal -->
+					<ul class="menu">
+						<li class="first">
+							<%= link_to 'FABLE List', fables_path %>
+						</li>
+						<li>
+							<%= link_to 'Upcoming Presenters', sign_ups_path %>
+						</li>
+						<li>
+							<%= link_to 'Topics', topics_path %>
+						</li>
+						<li class="last">
+							<%= unless(user_signed_in?) then link_to 'Sign In', new_user_session_path end %>
+							<%= if user_signed_in? then link_to 'Sign Out', destroy_user_session_path end %>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<%= yield %>
 		</div>
-		<div class="col_12 center">
-			<nav>
-				<!-- Menu Horizontal -->
-				<ul class="menu">
-					<li class="first">
-						<%= link_to 'FABLE List', fables_path %>
-					</li>
-					<li>
-						<%= link_to 'Upcoming Presenters', sign_ups_path %>
-					</li>
-					<li>
-						<%= link_to 'Topics', topics_path %>
-					</li>
-					<li class="last">
-						<%= unless(user_signed_in?) then link_to 'Sign In', new_user_session_path end %>
-						<%= if user_signed_in? then link_to 'Sign Out', destroy_user_session_path end %>
-					</li>
-				</ul>
-			</nav>
-		</div>
-		<%= yield %>
 	</body>
 </html>
