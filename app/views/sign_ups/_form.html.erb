@@ -16,7 +16,7 @@
 <div class="field">
 	<%= f.label :fable_id %>
 	<br>
-	<%= collection_select(:sign_up, :fable_id, Fable.all, :id, :date) %>
+	<%= collection_select(:sign_up, :fable_id, Fable.all, :id, :date, :selected => params[:fable_id]) %>
 </div>
 <div class="field">
 	<%= f.label :user_id %>
